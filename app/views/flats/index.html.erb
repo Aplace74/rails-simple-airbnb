@@ -1,0 +1,26 @@
+<h1> All our Flats (<%= @flats.size %>)<h1>
+
+    <div class="cards">
+    <% @flats.each do |flat| %>
+
+    <div class="card">
+      <div>
+        <h2><%= flat.name %></h2>
+        <p><%= flat.address %></p>
+        <div>
+          <span><i class="fas fa-user-friends"></i> <%= flat.number_of_guests %></span>
+          <span><i class="fas fa-euro-sign"></i> <%= flat.price_per_night %></span>
+        </div>
+      </div>
+      <div id="buttons" class="d-flex justify-content-around">
+        <%= link_to 'More info', flat_path(flat), { class: "btn btn-outline-primary" } %>
+        <%= link_to 'edit', edit_flat_path(flat), { class: "btn btn-outline-secondary" } %>
+        <%= link_to "delete", flat_path(flat),
+        class: "btn btn-outline-danger",
+        method: :delete,
+        data: { confirm: "Are you sure?" }%>
+      </div>
+    </div>
+
+    <% end %>
+    </div>
